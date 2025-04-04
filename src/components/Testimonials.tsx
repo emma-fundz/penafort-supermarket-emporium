@@ -5,7 +5,7 @@ const testimonials = [
     name: 'Chinwe Okonkwo',
     role: 'Regular Customer',
     image: 'https://randomuser.me/api/portraits/women/79.jpg',
-    content: 'Penafort Supermarket always has the freshest produce in the area. Their fruits and vegetables are superior to other stores I've visited. The staff is also very friendly and helpful.',
+    content: "Penafort Supermarket always has the freshest produce in the area. Their fruits and vegetables are superior to other stores I've visited. The staff is also very friendly and helpful.",
     rating: 5
   },
   {
@@ -13,7 +13,7 @@ const testimonials = [
     name: 'Emmanuel Adeyemi',
     role: 'Local Resident',
     image: 'https://randomuser.me/api/portraits/men/32.jpg',
-    content: 'I love the convenient location and the wide variety of products they offer. It's my one-stop shop for all household needs. Their prices are also quite competitive compared to other supermarkets in Iba.',
+    content: "I love the convenient location and the wide variety of products they offer. It's my one-stop shop for all household needs. Their prices are also quite competitive compared to other supermarkets in Iba.",
     rating: 4
   },
   {
