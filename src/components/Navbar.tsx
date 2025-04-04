@@ -25,7 +25,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/2ec4d7b3-5d88-4154-a3ea-6d3490b53260.png" 
+              src="/lovable-uploads/f137e1ee-3a31-44c7-9a41-5c0ac99fbb28.png" 
               alt="Penafort Supermarket Logo" 
               className="h-12 w-auto"
             />
