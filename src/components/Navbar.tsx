@@ -25,20 +25,20 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="/public/lovable-uploads/eff43fc9-75e8-4f20-83f1-73e60244a7ad.png" 
+              src="/lovable-uploads/2ec4d7b3-5d88-4154-a3ea-6d3490b53260.png" 
               alt="Penafort Supermarket Logo" 
               className="h-12 w-auto"
             />
-            <span className="text-xl font-bold text-penafort-dark hidden md:inline-block">Penafort</span>
+            <span className="text-xl font-bold text-green-600 hidden md:inline-block">Penafort</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-penafort font-medium">Home</Link>
-            <Link to="/shop" className="text-gray-700 hover:text-penafort font-medium">Shop</Link>
-            <Link to="/promotions" className="text-gray-700 hover:text-penafort font-medium">Promotions</Link>
-            <Link to="/about" className="text-gray-700 hover:text-penafort font-medium">About Us</Link>
-            <Link to="/contact" className="text-gray-700 hover:text-penafort font-medium">Contact</Link>
+            <Link to="/" className="text-gray-700 hover:text-green-600 font-medium">Home</Link>
+            <Link to="/shop" className="text-gray-700 hover:text-green-600 font-medium">Shop</Link>
+            <Link to="/promotions" className="text-gray-700 hover:text-green-600 font-medium">Promotions</Link>
+            <Link to="/about" className="text-gray-700 hover:text-green-600 font-medium">About Us</Link>
+            <Link to="/contact" className="text-gray-700 hover:text-green-600 font-medium">Contact</Link>
           </div>
 
           {/* Search, Cart & User - Desktop */}
@@ -48,24 +48,24 @@ const Navbar = () => {
                 <input
                   type="text"
                   placeholder="Search products..."
-                  className="py-1 px-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-penafort"
+                  className="py-1 px-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-green-500"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <Button 
                   type="submit" 
-                  className="bg-penafort hover:bg-penafort-dark text-white p-2 rounded-r-md"
+                  className="bg-green-600 hover:bg-green-700 text-white p-2 rounded-r-md"
                 >
                   <Search size={18} />
                 </Button>
               </form>
             </div>
-            <Link to="/account" className="text-gray-700 hover:text-penafort">
+            <Link to="/account" className="text-gray-700 hover:text-green-600">
               <User size={24} />
             </Link>
-            <Link to="/cart" className="text-gray-700 hover:text-penafort relative">
+            <Link to="/cart" className="text-gray-700 hover:text-green-600 relative">
               <ShoppingCart size={24} />
-              <span className="absolute -top-2 -right-2 bg-penafort text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-green-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 0
               </span>
             </Link>
@@ -73,9 +73,9 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
-            <Link to="/cart" className="text-gray-700 hover:text-penafort relative">
+            <Link to="/cart" className="text-gray-700 hover:text-green-600 relative">
               <ShoppingCart size={24} />
-              <span className="absolute -top-2 -right-2 bg-penafort text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-green-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 0
               </span>
             </Link>
@@ -93,55 +93,55 @@ const Navbar = () => {
                 <input
                   type="text"
                   placeholder="Search products..."
-                  className="flex-grow py-2 px-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-penafort"
+                  className="flex-grow py-2 px-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-green-500"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <Button 
                   type="submit" 
-                  className="bg-penafort hover:bg-penafort-dark text-white p-2 rounded-r-md"
+                  className="bg-green-600 hover:bg-green-700 text-white p-2 rounded-r-md"
                 >
                   <Search size={18} />
                 </Button>
               </form>
               <Link 
                 to="/" 
-                className="text-gray-700 hover:text-penafort font-medium py-2 border-b border-gray-100"
+                className="text-gray-700 hover:text-green-600 font-medium py-2 border-b border-gray-100"
                 onClick={toggleMenu}
               >
                 Home
               </Link>
               <Link 
                 to="/shop" 
-                className="text-gray-700 hover:text-penafort font-medium py-2 border-b border-gray-100"
+                className="text-gray-700 hover:text-green-600 font-medium py-2 border-b border-gray-100"
                 onClick={toggleMenu}
               >
                 Shop
               </Link>
               <Link 
                 to="/promotions" 
-                className="text-gray-700 hover:text-penafort font-medium py-2 border-b border-gray-100"
+                className="text-gray-700 hover:text-green-600 font-medium py-2 border-b border-gray-100"
                 onClick={toggleMenu}
               >
                 Promotions
               </Link>
               <Link 
                 to="/about" 
-                className="text-gray-700 hover:text-penafort font-medium py-2 border-b border-gray-100"
+                className="text-gray-700 hover:text-green-600 font-medium py-2 border-b border-gray-100"
                 onClick={toggleMenu}
               >
                 About Us
               </Link>
               <Link 
                 to="/contact" 
-                className="text-gray-700 hover:text-penafort font-medium py-2 border-b border-gray-100"
+                className="text-gray-700 hover:text-green-600 font-medium py-2 border-b border-gray-100"
                 onClick={toggleMenu}
               >
                 Contact
               </Link>
               <Link 
                 to="/account" 
-                className="text-gray-700 hover:text-penafort font-medium py-2 flex items-center"
+                className="text-gray-700 hover:text-green-600 font-medium py-2 flex items-center"
                 onClick={toggleMenu}
               >
                 <User size={18} className="mr-2" /> My Account
