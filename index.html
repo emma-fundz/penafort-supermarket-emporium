@@ -18,18 +18,809 @@
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/public/lovable-uploads/eff43fc9-75e8-4f20-83f1-73e60244a7ad.png" />
+    <link rel="icon" type="image/png" href="assets/images/logo.png" />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
 
   <body>
-    <div id="root"></div>
+    <!-- Header -->
+    <header id="header" class="fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="assets/images/logo.png" alt="Penafort Supermarket Logo" class="logo-img">
+            <span class="ms-2 logo-text">Penafort</span>
+          </a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="promotions.html">Promotions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+            
+            <div class="d-flex ms-lg-4 mt-3 mt-lg-0">
+              <div class="search-container me-3 d-none d-lg-block">
+                <form class="search-form">
+                  <input type="text" class="search-input" placeholder="Search products...">
+                  <button type="submit" class="search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
+              </div>
+              
+              <div class="header-icons">
+                <a href="account.html" class="icon-link">
+                  <i class="fas fa-user"></i>
+                </a>
+                <a href="cart.html" class="icon-link ms-3 position-relative">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span class="cart-badge">0</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <!-- Mobile Search Form -->
+      <div class="mobile-search d-lg-none">
+        <div class="container py-2">
+          <form class="mobile-search-form">
+            <input type="text" class="mobile-search-input" placeholder="Search products...">
+            <button type="submit" class="mobile-search-button">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="d-flex align-items-center">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+            <h1 class="hero-title">
+              <span class="text-primary">Fresh</span> & Quality Groceries
+            </h1>
+            <p class="hero-text">
+              Shop at Penafort Supermarket for the best selection of groceries, household essentials, and more at competitive prices. Serving the community of Iba, Ojo, Lagos.
+            </p>
+            <div class="hero-buttons">
+              <a href="shop.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-shopping-bag me-2"></i> Shop Now
+              </a>
+              <a href="promotions.html" class="btn btn-outline-primary btn-lg ms-sm-3 mt-3 mt-sm-0">
+                Current Promotions <i class="fas fa-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6 position-relative mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
+            <div class="hero-image-container">
+              <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Penafort Supermarket Interior" class="hero-image">
+              
+              <!-- Floating Elements -->
+              <div class="floating-card floating-card-1">
+                <div class="d-flex align-items-center">
+                  <div class="floating-card-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                  </div>
+                  <div>
+                    <p class="floating-card-title">Free Delivery</p>
+                    <p class="floating-card-text">On orders over ₦10,000</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="floating-card floating-card-2 d-none d-sm-block">
+                <div class="text-center">
+                  <div class="floating-discount">25%</div>
+                  <p class="floating-card-title">Weekend Special</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Categories Section -->
+    <section id="categories" class="section-padding">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Popular Categories</h2>
+        
+        <div class="row g-4">
+          <!-- Category 1 -->
+          <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <a href="shop.html?category=fruits" class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-apple-alt"></i>
+              </div>
+              <h3 class="category-title">Fruits & Vegetables</h3>
+              <p class="category-count">24 Products</p>
+            </a>
+          </div>
+          
+          <!-- Category 2 -->
+          <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <a href="shop.html?category=dairy" class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-cheese"></i>
+              </div>
+              <h3 class="category-title">Dairy & Eggs</h3>
+              <p class="category-count">18 Products</p>
+            </a>
+          </div>
+          
+          <!-- Category 3 -->
+          <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <a href="shop.html?category=meat" class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-drumstick-bite"></i>
+              </div>
+              <h3 class="category-title">Meat & Seafood</h3>
+              <p class="category-count">15 Products</p>
+            </a>
+          </div>
+          
+          <!-- Category 4 -->
+          <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <a href="shop.html?category=bakery" class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-bread-slice"></i>
+              </div>
+              <h3 class="category-title">Bakery</h3>
+              <p class="category-count">12 Products</p>
+            </a>
+          </div>
+          
+          <!-- Category 5 -->
+          <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+            <a href="shop.html?category=beverages" class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-glass-whiskey"></i>
+              </div>
+              <h3 class="category-title">Beverages</h3>
+              <p class="category-count">22 Products</p>
+            </a>
+          </div>
+          
+          <!-- Category 6 -->
+          <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+            <a href="shop.html?category=snacks" class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-cookie"></i>
+              </div>
+              <h3 class="category-title">Snacks</h3>
+              <p class="category-count">17 Products</p>
+            </a>
+          </div>
+          
+          <!-- Category 7 -->
+          <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="700">
+            <a href="shop.html?category=household" class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-spray-can"></i>
+              </div>
+              <h3 class="category-title">Household</h3>
+              <p class="category-count">19 Products</p>
+            </a>
+          </div>
+          
+          <!-- Category 8 -->
+          <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="800">
+            <a href="shop.html?category=personal" class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-pump-soap"></i>
+              </div>
+              <h3 class="category-title">Personal Care</h3>
+              <p class="category-count">14 Products</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promo Banners -->
+    <section id="promo-banners" class="section-padding bg-light">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Banner 1 -->
+          <div class="col-md-6" data-aos="fade-right">
+            <div class="promo-banner banner-1">
+              <div class="banner-content">
+                <h3 class="banner-title">Fresh Produce</h3>
+                <p class="banner-text">Locally sourced fruits and vegetables delivered fresh daily</p>
+                <a href="shop.html?category=fruits" class="btn btn-outline-light">Shop Now</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Banner 2 -->
+          <div class="col-md-6" data-aos="fade-left">
+            <div class="promo-banner banner-2">
+              <div class="banner-content">
+                <h3 class="banner-title">Weekend Special</h3>
+                <p class="banner-text">25% off all bakery items every weekend</p>
+                <a href="shop.html?category=bakery" class="btn btn-outline-light">Shop Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="featured-products" class="section-padding">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Featured Products</h2>
+        
+        <div class="featured-tabs" data-aos="fade-up">
+          <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all" aria-selected="true">All</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-trending-tab" data-bs-toggle="pill" data-bs-target="#pills-trending" type="button" role="tab" aria-controls="pills-trending" aria-selected="false">Trending</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-popular-tab" data-bs-toggle="pill" data-bs-target="#pills-popular" type="button" role="tab" aria-controls="pills-popular" aria-selected="false">Popular</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-new-tab" data-bs-toggle="pill" data-bs-target="#pills-new" type="button" role="tab" aria-controls="pills-new" aria-selected="false">New Arrivals</button>
+            </li>
+          </ul>
+          
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+              <div class="row g-4">
+                <!-- Product 1 -->
+                <div class="col-6 col-md-4 col-lg-3">
+                  <div class="product-card">
+                    <div class="product-badge">Sale</div>
+                    <div class="product-tumb">
+                      <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Product">
+                    </div>
+                    <div class="product-details">
+                      <span class="product-category">Fruits</span>
+                      <h4><a href="product-detail.html">Premium Oranges (1kg)</a></h4>
+                      <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.5 (24)</span>
+                      </div>
+                      <div class="product-price">
+                        <span class="old-price">₦1,500</span>
+                        <span class="current-price">₦1,200</span>
+                      </div>
+                      <div class="product-buttons">
+                        <a href="#" class="quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fas fa-eye"></i></a>
+                        <a href="cart.html" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="col-6 col-md-4 col-lg-3">
+                  <div class="product-card">
+                    <div class="product-badge bg-success">New</div>
+                    <div class="product-tumb">
+                      <img src="https://images.unsplash.com/photo-1589927986088-8431250ee9d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Product">
+                    </div>
+                    <div class="product-details">
+                      <span class="product-category">Dairy</span>
+                      <h4><a href="product-detail.html">Fresh Milk (1L)</a></h4>
+                      <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>5.0 (36)</span>
+                      </div>
+                      <div class="product-price">
+                        <span class="current-price">₦850</span>
+                      </div>
+                      <div class="product-buttons">
+                        <a href="#" class="quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fas fa-eye"></i></a>
+                        <a href="cart.html" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="col-6 col-md-4 col-lg-3">
+                  <div class="product-card">
+                    <div class="product-tumb">
+                      <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Product">
+                    </div>
+                    <div class="product-details">
+                      <span class="product-category">Bakery</span>
+                      <h4><a href="product-detail.html">Wheat Bread</a></h4>
+                      <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>4.0 (18)</span>
+                      </div>
+                      <div class="product-price">
+                        <span class="current-price">₦550</span>
+                      </div>
+                      <div class="product-buttons">
+                        <a href="#" class="quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fas fa-eye"></i></a>
+                        <a href="cart.html" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="col-6 col-md-4 col-lg-3">
+                  <div class="product-card">
+                    <div class="product-badge bg-danger">Hot</div>
+                    <div class="product-tumb">
+                      <img src="https://images.unsplash.com/photo-1624478621407-d0bbb3b9cd5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Product">
+                    </div>
+                    <div class="product-details">
+                      <span class="product-category">Meat</span>
+                      <h4><a href="product-detail.html">Premium Beef (500g)</a></h4>
+                      <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                        <span>3.5 (12)</span>
+                      </div>
+                      <div class="product-price">
+                        <span class="current-price">₦2,800</span>
+                      </div>
+                      <div class="product-buttons">
+                        <a href="#" class="quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fas fa-eye"></i></a>
+                        <a href="cart.html" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- More products can be added here -->
+              </div>
+            </div>
+            
+            <!-- Additional tabs content -->
+            <div class="tab-pane fade" id="pills-trending" role="tabpanel" aria-labelledby="pills-trending-tab">
+              <!-- Trending products here -->
+              <div class="row g-4">
+                <!-- Similar product cards as above, but with trending products -->
+              </div>
+            </div>
+            
+            <div class="tab-pane fade" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
+              <!-- Popular products here -->
+              <div class="row g-4">
+                <!-- Similar product cards as above, but with popular products -->
+              </div>
+            </div>
+            
+            <div class="tab-pane fade" id="pills-new" role="tabpanel" aria-labelledby="pills-new-tab">
+              <!-- New arrival products here -->
+              <div class="row g-4">
+                <!-- Similar product cards as above, but with new products -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-5" data-aos="fade-up">
+          <a href="shop.html" class="btn btn-outline-primary btn-lg">View All Products</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section-padding bg-light">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">What Our Customers Say</h2>
+        
+        <div class="swiper testimonial-slider" data-aos="fade-up">
+          <div class="swiper-wrapper">
+            <!-- Testimonial 1 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">
+                  I've been shopping at Penafort Supermarket for over a year now, and I'm always impressed by the quality of their products. Their fresh produce section is simply outstanding!
+                </p>
+                <div class="testimonial-user">
+                  <img src="https://i.pravatar.cc/150?img=1" alt="Customer" class="testimonial-avatar">
+                  <div>
+                    <h4 class="testimonial-name">Adekunle Johnson</h4>
+                    <p class="testimonial-location">Iba, Lagos</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testimonial-text">
+                  The variety of products available at Penafort is impressive. I especially love their bakery section. The prices are reasonable, and the staff is always helpful and friendly.
+                </p>
+                <div class="testimonial-user">
+                  <img src="https://i.pravatar.cc/150?img=5" alt="Customer" class="testimonial-avatar">
+                  <div>
+                    <h4 class="testimonial-name">Chioma Nwosu</h4>
+                    <p class="testimonial-location">Ojo, Lagos</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <p class="testimonial-text">
+                  I appreciate how clean and organized Penafort Supermarket is. Finding what I need is never a problem, and their weekend specials are always worth checking out. Highly recommended!
+                </p>
+                <div class="testimonial-user">
+                  <img src="https://i.pravatar.cc/150?img=8" alt="Customer" class="testimonial-avatar">
+                  <div>
+                    <h4 class="testimonial-name">Emeka Okafor</h4>
+                    <p class="testimonial-location">Festac, Lagos</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Store Info Section -->
+    <section id="store-info" class="section-padding">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <h2 class="section-title text-start">Why Choose Penafort Supermarket?</h2>
+            <p class="mb-4">
+              At Penafort Supermarket, we strive to provide our customers with the best shopping experience. Our commitment to quality, affordability, and excellent customer service sets us apart.
+            </p>
+            
+            <div class="features-list">
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Fresh Quality Products</h4>
+                  <p>We source our products from reliable suppliers to ensure freshness and quality.</p>
+                </div>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-truck"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Fast Delivery</h4>
+                  <p>We offer prompt delivery services within Iba and surrounding areas.</p>
+                </div>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-tags"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Competitive Prices</h4>
+                  <p>We offer the best prices in town without compromising quality.</p>
+                </div>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-headset"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>24/7 Customer Support</h4>
+                  <p>Our customer service team is always ready to assist you.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="store-image-container">
+              <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="Penafort Supermarket" class="img-fluid rounded-4 shadow-lg">
+              
+              <div class="store-stats">
+                <div class="stat-item">
+                  <h3>5000+</h3>
+                  <p>Products</p>
+                </div>
+                <div class="stat-item">
+                  <h3>2000+</h3>
+                  <p>Happy Customers</p>
+                </div>
+                <div class="stat-item">
+                  <h3>15+</h3>
+                  <p>Years Experience</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="py-5 newsletter-section">
+      <div class="container py-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center" data-aos="fade-up">
+            <h2 class="text-white mb-3">Subscribe to Our Newsletter</h2>
+            <p class="text-white-50 mb-4">
+              Subscribe to our newsletter and be the first to know about new products, special offers, and exclusive discounts.
+            </p>
+            
+            <form class="newsletter-form">
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="Your email address" required>
+                <button class="btn btn-light" type="submit" id="button-addon2">Subscribe</button>
+              </div>
+              <div class="form-text text-white-50 mt-2">
+                By subscribing, you agree to receive promotional emails from Penafort Supermarket.
+                You can unsubscribe at any time.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-dark text-white">
+      <div class="container py-5">
+        <div class="row g-4">
+          <!-- About -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget">
+              <div class="footer-logo mb-3">
+                <img src="assets/images/logo.png" alt="Penafort Supermarket Logo" class="img-fluid footer-logo-img">
+                <span class="ms-2 footer-logo-text">Penafort</span>
+              </div>
+              <p class="footer-about">
+                Penafort Supermarket offers a variety of groceries, household items, and fast-moving consumer goods with a focus on quality, convenience, and exceptional customer service.
+              </p>
+              <div class="footer-social">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Quick Links -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget">
+              <h4 class="footer-widget-title">Quick Links</h4>
+              <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="promotions.html">Promotions</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Contact -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget">
+              <h4 class="footer-widget-title">Contact Us</h4>
+              <ul class="footer-contact">
+                <li>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Iba, Ojo, Lagos, Nigeria</span>
+                </li>
+                <li>
+                  <i class="fas fa-phone-alt"></i>
+                  <span>+234 123 456 7890</span>
+                </li>
+                <li>
+                  <i class="fas fa-envelope"></i>
+                  <span>info@penafortsupermarket.com</span>
+                </li>
+                <li>
+                  <i class="fas fa-clock"></i>
+                  <span>Mon-Sat: 8:00 AM - 9:00 PM<br>Sunday: 9:00 AM - 6:00 PM</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Newsletter -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget">
+              <h4 class="footer-widget-title">Newsletter</h4>
+              <p class="footer-newsletter-text">
+                Subscribe to our newsletter for updates on promotions and new products.
+              </p>
+              <form class="footer-newsletter-form">
+                <div class="input-group mb-3">
+                  <input type="email" class="form-control" placeholder="Your Email" required>
+                  <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              </form>
+              <div class="payment-methods">
+                <img src="assets/images/payment-methods.png" alt="Payment Methods" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="footer-bottom py-3">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+              <p class="mb-0">&copy; 2025 Penafort Supermarket - A subsidiary of Penafort Energy Nigeria Limited. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+              <a href="#" class="footer-bottom-link">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Quick View Modal -->
+    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="quickViewModalLabel">Quick View</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <div class="product-gallery">
+                  <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" class="img-fluid rounded" alt="Product">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h3 class="product-title">Premium Oranges (1kg)</h3>
+                <div class="product-rating mb-3">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span>4.5 (24 reviews)</span>
+                </div>
+                <div class="product-price mb-3">
+                  <span class="old-price">₦1,500</span>
+                  <span class="current-price">₦1,200</span>
+                </div>
+                <p class="product-description mb-4">
+                  Fresh and juicy oranges, perfect for making juice or eating as a healthy snack. Our oranges are locally sourced and of the highest quality.
+                </p>
+                <div class="mb-3">
+                  <div class="d-flex align-items-center">
+                    <div class="me-3">Quantity:</div>
+                    <div class="quantity-selector">
+                      <button class="quantity-btn minus-btn"><i class="fas fa-minus"></i></button>
+                      <input type="number" min="1" value="1" class="quantity-input">
+                      <button class="quantity-btn plus-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="ms-3 text-success">In Stock</div>
+                  </div>
+                </div>
+                <div class="product-meta mb-4">
+                  <div><span class="meta-label">SKU:</span> <span class="meta-value">FRT-ORG-001</span></div>
+                  <div><span class="meta-label">Category:</span> <span class="meta-value">Fruits</span></div>
+                  <div><span class="meta-label">Tags:</span> <span class="meta-value">Fruits, Organic, Healthy</span></div>
+                </div>
+                <div class="d-grid gap-2 d-md-block">
+                  <button class="btn btn-primary"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                  <button class="btn btn-outline-dark ms-md-2"><i class="fas fa-heart me-2"></i>Add to Wishlist</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

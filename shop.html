@@ -1,0 +1,996 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop - Penafort Supermarket</title>
+    <meta name="description" content="Browse and shop our wide selection of groceries, household items, and more at Penafort Supermarket in Iba, Ojo, Lagos." />
+    <meta name="author" content="Penafort Energy Nigeria Limited" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Nouislider CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Page specific CSS -->
+    <style>
+      .shop-container {
+        padding-top: 80px;
+      }
+      
+      .filter-card {
+        background-color: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      
+      .filter-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--gray-800);
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--gray-200);
+      }
+      
+      .category-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .category-list li {
+        margin-bottom: 10px;
+      }
+      
+      .category-list a {
+        color: var(--gray-700);
+        font-size: 14px;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      
+      .category-list a:hover {
+        color: var(--primary-color);
+        transform: translateX(5px);
+      }
+      
+      .category-count {
+        background-color: var(--gray-200);
+        color: var(--gray-700);
+        font-size: 12px;
+        padding: 2px 8px;
+        border-radius: 10px;
+        transition: var(--transition);
+      }
+      
+      .category-list a:hover .category-count {
+        background-color: var(--primary-color);
+        color: var(--white);
+      }
+      
+      .price-range-filter {
+        margin-top: 20px;
+      }
+      
+      .price-inputs {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 15px;
+      }
+      
+      .price-input {
+        width: 45%;
+      }
+      
+      .price-input input {
+        width: 100%;
+        border: 1px solid var(--gray-300);
+        border-radius: var(--border-radius);
+        padding: 8px;
+        font-size: 14px;
+      }
+      
+      .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+      
+      .shop-sorting {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--gray-200);
+      }
+      
+      .shop-sorting p {
+        margin-bottom: 0;
+        font-size: 14px;
+        color: var(--gray-700);
+      }
+      
+      .shop-sorting select {
+        border: 1px solid var(--gray-300);
+        border-radius: var(--border-radius);
+        padding: 8px 12px;
+        font-size: 14px;
+        color: var(--gray-700);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+      
+      .shop-sorting select:focus {
+        border-color: var(--primary-color);
+        outline: none;
+      }
+      
+      .show-filters-btn {
+        background-color: var(--primary-color);
+        color: var(--white);
+        border: none;
+        border-radius: var(--border-radius);
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        display: none;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      
+      .show-filters-btn:hover {
+        background-color: var(--primary-dark);
+      }
+      
+      .shop-banner {
+        margin-bottom: 30px;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        position: relative;
+      }
+      
+      .shop-banner img {
+        width: 100%;
+        height: auto;
+      }
+      
+      .shop-banner-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px;
+        background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+        color: var(--white);
+      }
+      
+      .shop-banner-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      
+      .shop-banner-text {
+        font-size: 16px;
+        max-width: 500px;
+        margin-bottom: 20px;
+      }
+      
+      .page-header {
+        background-color: var(--gray-100);
+        padding: 30px 0;
+        margin-bottom: 50px;
+      }
+      
+      .page-title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      
+      .breadcrumb-item a {
+        color: var(--gray-600);
+      }
+      
+      .breadcrumb-item.active {
+        color: var(--primary-color);
+      }
+      
+      /* Mobile filters */
+      @media (max-width: 991px) {
+        .show-filters-btn {
+          display: block;
+        }
+        
+        .shop-filters {
+          display: none;
+        }
+        
+        .shop-filters.show {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header id="header" class="fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="assets/images/logo.png" alt="Penafort Supermarket Logo" class="logo-img">
+            <span class="ms-2 logo-text">Penafort</span>
+          </a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="shop.html">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="promotions.html">Promotions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+            
+            <div class="d-flex ms-lg-4 mt-3 mt-lg-0">
+              <div class="search-container me-3 d-none d-lg-block">
+                <form class="search-form">
+                  <input type="text" class="search-input" placeholder="Search products...">
+                  <button type="submit" class="search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
+              </div>
+              
+              <div class="header-icons">
+                <a href="account.html" class="icon-link">
+                  <i class="fas fa-user"></i>
+                </a>
+                <a href="cart.html" class="icon-link ms-3 position-relative">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span class="cart-badge">0</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <!-- Mobile Search Form -->
+      <div class="mobile-search d-lg-none">
+        <div class="container py-2">
+          <form class="mobile-search-form">
+            <input type="text" class="mobile-search-input" placeholder="Search products...">
+            <button type="submit" class="mobile-search-button">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Page Header -->
+      <section class="page-header">
+        <div class="container">
+          <h1 class="page-title" data-aos="fade-up">Shop All Products</h1>
+          <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="100">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Shop</li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <!-- Shop Section -->
+      <section class="pb-5">
+        <div class="container shop-container">
+          <!-- Shop Banner -->
+          <div class="shop-banner" data-aos="fade-up">
+            <img src="https://images.unsplash.com/photo-1579113800032-c38bd7635818?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80" alt="Shop Banner">
+            <div class="shop-banner-content">
+              <h2 class="shop-banner-title">Fresh Produce Delivered Daily</h2>
+              <p class="shop-banner-text">Shop our wide selection of fresh fruits and vegetables sourced from local farmers. Healthy options for you and your family.</p>
+              <a href="#" class="btn btn-primary">Shop Now</a>
+            </div>
+          </div>
+          
+          <!-- Mobile Filter Button -->
+          <button class="show-filters-btn" id="showFilters">
+            <i class="fas fa-filter me-2"></i> Show Filters
+          </button>
+          
+          <div class="row">
+            <!-- Shop Filters -->
+            <div class="col-lg-3">
+              <div class="shop-filters" id="shopFilters">
+                <!-- Categories Filter -->
+                <div class="filter-card">
+                  <h3 class="filter-title">Categories</h3>
+                  <ul class="category-list">
+                    <li>
+                      <a href="#">
+                        <span>All Products</span>
+                        <span class="category-count">142</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>Fruits & Vegetables</span>
+                        <span class="category-count">24</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>Dairy & Eggs</span>
+                        <span class="category-count">18</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>Meat & Seafood</span>
+                        <span class="category-count">15</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>Bakery</span>
+                        <span class="category-count">12</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>Beverages</span>
+                        <span class="category-count">22</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>Snacks</span>
+                        <span class="category-count">17</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>Household</span>
+                        <span class="category-count">19</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span>Personal Care</span>
+                        <span class="category-count">14</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                
+                <!-- Price Filter -->
+                <div class="filter-card">
+                  <h3 class="filter-title">Price Range</h3>
+                  <div id="price-range"></div>
+                  <div class="price-inputs">
+                    <div class="price-input">
+                      <input type="text" id="min-price" placeholder="Min" readonly>
+                    </div>
+                    <div class="price-input">
+                      <input type="text" id="max-price" placeholder="Max" readonly>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Brand Filter -->
+                <div class="filter-card">
+                  <h3 class="filter-title">Brands</h3>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="brand1">
+                    <label class="form-check-label" for="brand1">
+                      Nestle
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="brand2">
+                    <label class="form-check-label" for="brand2">
+                      Unilever
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="brand3">
+                    <label class="form-check-label" for="brand3">
+                      Cadbury
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="brand4">
+                    <label class="form-check-label" for="brand4">
+                      Coca-Cola
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="brand5">
+                    <label class="form-check-label" for="brand5">
+                      Dano
+                    </label>
+                  </div>
+                </div>
+                
+                <!-- Discount Filter -->
+                <div class="filter-card">
+                  <h3 class="filter-title">Discount</h3>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="discount1">
+                    <label class="form-check-label" for="discount1">
+                      10% Off or More
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="discount2">
+                    <label class="form-check-label" for="discount2">
+                      25% Off or More
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="discount3">
+                    <label class="form-check-label" for="discount3">
+                      50% Off or More
+                    </label>
+                  </div>
+                </div>
+                
+                <!-- Rating Filter -->
+                <div class="filter-card">
+                  <h3 class="filter-title">Customer Rating</h3>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="rating5">
+                    <label class="form-check-label" for="rating5">
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <span class="ms-2">5.0</span>
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="rating4">
+                    <label class="form-check-label" for="rating4">
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="far fa-star text-warning"></i>
+                      <span class="ms-2">4.0 & Up</span>
+                    </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="rating3">
+                    <label class="form-check-label" for="rating3">
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                      <i class="far fa-star text-warning"></i>
+                      <i class="far fa-star text-warning"></i>
+                      <span class="ms-2">3.0 & Up</span>
+                    </label>
+                  </div>
+                </div>
+                
+                <!-- Reset Filters -->
+                <button class="btn btn-outline-primary w-100">Reset Filters</button>
+              </div>
+            </div>
+            
+            <!-- Shop Products -->
+            <div class="col-lg-9">
+              <div class="shop-sorting">
+                <p>Showing 1-12 of 142 products</p>
+                <select class="form-select">
+                  <option value="popularity">Sort by popularity</option>
+                  <option value="price-low">Sort by price: low to high</option>
+                  <option value="price-high">Sort by price: high to low</option>
+                  <option value="newest">Sort by newest</option>
+                </select>
+              </div>
+              
+              <div class="row g-4">
+                <!-- Product 1 -->
+                <div class="col-6 col-md-4" data-aos="fade-up">
+                  <div class="product-card">
+                    <div class="product-badge">Sale</div>
+                    <div class="product-tumb">
+                      <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Product">
+                    </div>
+                    <div class="product-details">
+                      <span class="product-category">Fruits</span>
+                      <h4><a href="product-detail.html">Premium Oranges (1kg)</a></h4>
+                      <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.5 (24)</span>
+                      </div>
+                      <div class="product-price">
+                        <span class="old-price">₦1,500</span>
+                        <span class="current-price">₦1,200</span>
+                      </div>
+                      <div class="product-buttons">
+                        <a href="#" class="quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fas fa-eye"></i></a>
+                        <a href="cart.html" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="100">
+                  <div class="product-card">
+                    <div class="product-badge bg-success">New</div>
+                    <div class="product-tumb">
+                      <img src="https://images.unsplash.com/photo-1589927986088-8431250ee9d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Product">
+                    </div>
+                    <div class="product-details">
+                      <span class="product-category">Dairy</span>
+                      <h4><a href="product-detail.html">Fresh Milk (1L)</a></h4>
+                      <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>5.0 (36)</span>
+                      </div>
+                      <div class="product-price">
+                        <span class="current-price">₦850</span>
+                      </div>
+                      <div class="product-buttons">
+                        <a href="#" class="quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fas fa-eye"></i></a>
+                        <a href="cart.html" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="200">
+                  <div class="product-card">
+                    <div class="product-tumb">
+                      <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Product">
+                    </div>
+                    <div class="product-details">
+                      <span class="product-category">Bakery</span>
+                      <h4><a href="product-detail.html">Wheat Bread</a></h4>
+                      <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>4.0 (18)</span>
+                      </div>
+                      <div class="product-price">
+                        <span class="current-price">₦550</span>
+                      </div>
+                      <div class="product-buttons">
+                        <a href="#" class="quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fas fa-eye"></i></a>
+                        <a href="cart.html" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="col-6 col-md-4" data-aos="fade-up">
+                  <div class="product-card">
+                    <div class="product-badge bg-danger">Hot</div>
+                    <div class="product-tumb">
+                      <img src="https://images.unsplash.com/photo-1624478621407-d0bbb3b9cd5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Product">
+                    </div>
+                    <div class="product-details">
+                      <span class="product-category">Meat</span>
+                      <h4><a href="product-detail.html">Premium Beef (500g)</a></h4>
+                      <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                        <span>3.5 (12)</span>
+                      </div>
+                      <div class="product-price">
+                        <span class="current-price">₦2,800</span>
+                      </div>
+                      <div class="product-buttons">
+                        <a href="#" class="quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fas fa-eye"></i></a>
+                        <a href="cart.html" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="100">
+                  <div class="product-card">
+                    <div class="product-tumb">
+                      <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Product">
+                    </div>
+                    <div class="product-details">
+                      <span class="product-category">Beverages</span>
+                      <h4><a href="product-detail.html">Premium Coffee (250g)</a></h4>
+                      <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>4.0 (28)</span>
+                      </div>
+                      <div class="product-price">
+                        <span class="current-price">₦1,950</span>
+                      </div>
+                      <div class="product-buttons">
+                        <a href="#" class="quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fas fa-eye"></i></a>
+                        <a href="cart.html" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="200">
+                  <div class="product-card">
+                    <div class="product-badge">Sale</div>
+                    <div class="product-tumb">
+                      <img src="https://images.unsplash.com/photo-1616684000067-36952fde56ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Product">
+                    </div>
+                    <div class="product-details">
+                      <span class="product-category">Snacks</span>
+                      <h4><a href="product-detail.html">Chocolate Cookies (12pcs)</a></h4>
+                      <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.5 (32)</span>
+                      </div>
+                      <div class="product-price">
+                        <span class="old-price">₦900</span>
+                        <span class="current-price">₦750</span>
+                      </div>
+                      <div class="product-buttons">
+                        <a href="#" class="quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fas fa-eye"></i></a>
+                        <a href="cart.html" class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Pagination -->
+              <nav class="mt-5">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                      <i class="fas fa-chevron-left"></i>
+                    </a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">
+                      <i class="fas fa-chevron-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter Section -->
+      <section id="newsletter" class="py-5 newsletter-section">
+        <div class="container py-4">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 text-center" data-aos="fade-up">
+              <h2 class="text-white mb-3">Subscribe to Our Newsletter</h2>
+              <p class="text-white-50 mb-4">
+                Subscribe to our newsletter and be the first to know about new products, special offers, and exclusive discounts.
+              </p>
+              
+              <form class="newsletter-form">
+                <div class="input-group">
+                  <input type="email" class="form-control" placeholder="Your email address" required>
+                  <button class="btn btn-light" type="submit" id="button-addon2">Subscribe</button>
+                </div>
+                <div class="form-text text-white-50 mt-2">
+                  By subscribing, you agree to receive promotional emails from Penafort Supermarket.
+                  You can unsubscribe at any time.
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-dark text-white">
+      <div class="container py-5">
+        <div class="row g-4">
+          <!-- About -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget">
+              <div class="footer-logo mb-3">
+                <img src="assets/images/logo.png" alt="Penafort Supermarket Logo" class="img-fluid footer-logo-img">
+                <span class="ms-2 footer-logo-text">Penafort</span>
+              </div>
+              <p class="footer-about">
+                Penafort Supermarket offers a variety of groceries, household items, and fast-moving consumer goods with a focus on quality, convenience, and exceptional customer service.
+              </p>
+              <div class="footer-social">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Quick Links -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget">
+              <h4 class="footer-widget-title">Quick Links</h4>
+              <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="promotions.html">Promotions</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Contact -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget">
+              <h4 class="footer-widget-title">Contact Us</h4>
+              <ul class="footer-contact">
+                <li>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Iba, Ojo, Lagos, Nigeria</span>
+                </li>
+                <li>
+                  <i class="fas fa-phone-alt"></i>
+                  <span>+234 123 456 7890</span>
+                </li>
+                <li>
+                  <i class="fas fa-envelope"></i>
+                  <span>info@penafortsupermarket.com</span>
+                </li>
+                <li>
+                  <i class="fas fa-clock"></i>
+                  <span>Mon-Sat: 8:00 AM - 9:00 PM<br>Sunday: 9:00 AM - 6:00 PM</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Newsletter -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget">
+              <h4 class="footer-widget-title">Newsletter</h4>
+              <p class="footer-newsletter-text">
+                Subscribe to our newsletter for updates on promotions and new products.
+              </p>
+              <form class="footer-newsletter-form">
+                <div class="input-group mb-3">
+                  <input type="email" class="form-control" placeholder="Your Email" required>
+                  <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              </form>
+              <div class="payment-methods">
+                <img src="assets/images/payment-methods.png" alt="Payment Methods" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="footer-bottom py-3">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+              <p class="mb-0">&copy; 2025 Penafort Supermarket - A subsidiary of Penafort Energy Nigeria Limited. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+              <a href="#" class="footer-bottom-link">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Quick View Modal -->
+    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="quickViewModalLabel">Quick View</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <div class="product-gallery">
+                  <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" class="img-fluid rounded" alt="Product">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h3 class="product-title">Premium Oranges (1kg)</h3>
+                <div class="product-rating mb-3">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span>4.5 (24 reviews)</span>
+                </div>
+                <div class="product-price mb-3">
+                  <span class="old-price">₦1,500</span>
+                  <span class="current-price">₦1,200</span>
+                </div>
+                <p class="product-description mb-4">
+                  Fresh and juicy oranges, perfect for making juice or eating as a healthy snack. Our oranges are locally sourced and of the highest quality.
+                </p>
+                <div class="mb-3">
+                  <div class="d-flex align-items-center">
+                    <div class="me-3">Quantity:</div>
+                    <div class="quantity-selector">
+                      <button class="quantity-btn minus-btn"><i class="fas fa-minus"></i></button>
+                      <input type="number" min="1" value="1" class="quantity-input">
+                      <button class="quantity-btn plus-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="ms-3 text-success">In Stock</div>
+                  </div>
+                </div>
+                <div class="product-meta mb-4">
+                  <div><span class="meta-label">SKU:</span> <span class="meta-value">FRT-ORG-001</span></div>
+                  <div><span class="meta-label">Category:</span> <span class="meta-value">Fruits</span></div>
+                  <div><span class="meta-label">Tags:</span> <span class="meta-value">Fruits, Organic, Healthy</span></div>
+                </div>
+                <div class="d-grid gap-2 d-md-block">
+                  <button class="btn btn-primary"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                  <button class="btn btn-outline-dark ms-md-2"><i class="fas fa-heart me-2"></i>Add to Wishlist</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Nouislider JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Page Specific JS -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Price range slider
+        const priceRange = document.getElementById('price-range');
+        if (priceRange) {
+          noUiSlider.create(priceRange, {
+            start: [500, 5000],
+            connect: true,
+            step: 100,
+            range: {
+              'min': 0,
+              'max': 10000
+            },
+            format: {
+              to: function (value) {
+                return '₦' + parseInt(value).toLocaleString();
+              },
+              from: function (value) {
+                return Number(value.replace('₦', '').replace(',', ''));
+              }
+            }
+          });
+          
+          const minPriceInput = document.getElementById('min-price');
+          const maxPriceInput = document.getElementById('max-price');
+          
+          priceRange.noUiSlider.on('update', function (values, handle) {
+            if (handle === 0) {
+              minPriceInput.value = values[handle];
+            } else {
+              maxPriceInput.value = values[handle];
+            }
+          });
+        }
+        
+        // Toggle mobile filters
+        const showFiltersBtn = document.getElementById('showFilters');
+        const shopFilters = document.getElementById('shopFilters');
+        
+        if (showFiltersBtn && shopFilters) {
+          showFiltersBtn.addEventListener('click', function() {
+            shopFilters.classList.toggle('show');
+            this.innerHTML = shopFilters.classList.contains('show') 
+              ? '<i class="fas fa-times me-2"></i> Hide Filters' 
+              : '<i class="fas fa-filter me-2"></i> Show Filters';
+          });
+        }
+      });
+    </script>
+    
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  </body>
+</html>

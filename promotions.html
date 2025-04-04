@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promotions - Penafort Supermarket</title>
+    <meta name="description" content="Explore the latest promotions, discounts, and special offers at Penafort Supermarket in Iba, Ojo, Lagos." />
+    <meta name="author" content="Penafort Energy Nigeria Limited" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Page specific CSS -->
+    <style>
+      .promo-card {
+        overflow: hidden;
+        border-radius: var(--border-radius);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        height: 100%;
+        transition: var(--transition);
+        background-color: var(--white);
+      }
+      
+      .promo-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      }
+      
+      .promo-image {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+      }
+      
+      .promo-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+      
+      .promo-card:hover .promo-image img {
+        transform: scale(1.1);
+      }
+      
+      .promo-discount {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: var(--danger);
+        color: var(--white);
+        font-weight: 700;
+        padding: 5px 15px;
+        border-radius: 4px;
+        z-index: 1;
+      }
+      
+      .promo-content {
+        padding: 20px;
+      }
+      
+      .promo-category {
+        display: inline-block;
+        padding: 3px 10px;
+        background-color: rgba(50, 181, 46, 0.1);
+        color: var(--primary-color);
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 20px;
+        margin-bottom: 10px;
+      }
+      
+      .promo-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: var(--gray-800);
+      }
+      
+      .promo-description {
+        color: var(--gray-700);
+        font-size: 14px;
+        margin-bottom: 15px;
+        min-height: 60px;
+      }
+      
+      .promo-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: var(--gray-600);
+        margin-bottom: 15px;
+      }
+      
+      .promo-meta i {
+        margin-right: 5px;
+        color: var(--primary-color);
+      }
+      
+      .promo-banner {
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      }
+      
+      .page-header {
+        background-color: var(--gray-100);
+        padding: 30px 0;
+        margin-bottom: 50px;
+      }
+      
+      .page-title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      
+      .breadcrumb-item a {
+        color: var(--gray-600);
+      }
+      
+      .breadcrumb-item.active {
+        color: var(--primary-color);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header id="header" class="fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="assets/images/logo.png" alt="Penafort Supermarket Logo" class="logo-img">
+            <span class="ms-2 logo-text">Penafort</span>
+          </a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="promotions.html">Promotions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+            
+            <div class="d-flex ms-lg-4 mt-3 mt-lg-0">
+              <div class="search-container me-3 d-none d-lg-block">
+                <form class="search-form">
+                  <input type="text" class="search-input" placeholder="Search products...">
+                  <button type="submit" class="search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
+              </div>
+              
+              <div class="header-icons">
+                <a href="account.html" class="icon-link">
+                  <i class="fas fa-user"></i>
+                </a>
+                <a href="cart.html" class="icon-link ms-3 position-relative">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span class="cart-badge">0</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <!-- Mobile Search Form -->
+      <div class="mobile-search d-lg-none">
+        <div class="container py-2">
+          <form class="mobile-search-form">
+            <input type="text" class="mobile-search-input" placeholder="Search products...">
+            <button type="submit" class="mobile-search-button">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Page Header -->
+      <section class="page-header">
+        <div class="container">
+          <h1 class="page-title" data-aos="fade-up">Current Promotions</h1>
+          <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="100">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Promotions</li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <!-- Featured Promotions -->
+      <section class="section-padding">
+        <div class="container">
+          <h2 class="section-title" data-aos="fade-up">Featured Offers</h2>
+          
+          <div class="row g-4">
+            <!-- Promo 1 -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="promo-card">
+                <div class="promo-image">
+                  <img src="https://images.unsplash.com/photo-1610348725531-843dff563e2c" alt="Weekend Special: 25% Off Fresh Produce">
+                  <div class="promo-discount">25% OFF</div>
+                </div>
+                <div class="promo-content">
+                  <span class="promo-category"><i class="fas fa-tag me-1"></i>Fresh Produce</span>
+                  <h3 class="promo-title">Weekend Special: 25% Off Fresh Produce</h3>
+                  <p class="promo-description">
+                    Get 25% off all fresh fruits and vegetables this weekend. Stock up on nutritious essentials for your family.
+                  </p>
+                  <div class="promo-meta">
+                    <span><i class="fas fa-calendar-alt"></i>Ends: April 20, 2025</span>
+                  </div>
+                  <a href="shop.html?promotion=1" class="btn btn-primary w-100">Shop Now</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Promo 2 -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="promo-card">
+                <div class="promo-image">
+                  <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec" alt="Buy 1 Get 1 Free on Bakery Items">
+                  <div class="promo-discount">BOGO</div>
+                </div>
+                <div class="promo-content">
+                  <span class="promo-category"><i class="fas fa-tag me-1"></i>Bakery</span>
+                  <h3 class="promo-title">Buy 1 Get 1 Free on Bakery Items</h3>
+                  <p class="promo-description">
+                    Purchase any bakery item and get another one of equal or lesser value for free. Perfect for breakfast or dessert.
+                  </p>
+                  <div class="promo-meta">
+                    <span><i class="fas fa-calendar-alt"></i>Ends: April 15, 2025</span>
+                  </div>
+                  <a href="shop.html?promotion=2" class="btn btn-primary w-100">Shop Now</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Promo 3 -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+              <div class="promo-card">
+                <div class="promo-image">
+                  <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473" alt="Household Essentials Bundle">
+                  <div class="promo-discount">Bundle</div>
+                </div>
+                <div class="promo-content">
+                  <span class="promo-category"><i class="fas fa-tag me-1"></i>Household</span>
+                  <h3 class="promo-title">Household Essentials Bundle</h3>
+                  <p class="promo-description">
+                    Save ₦2,000 when you purchase any 3 household essential items. Limited time offer.
+                  </p>
+                  <div class="promo-meta">
+                    <span><i class="fas fa-calendar-alt"></i>Ends: April 25, 2025</span>
+                  </div>
+                  <a href="shop.html?promotion=3" class="btn btn-primary w-100">Shop Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Promotional Banner -->
+      <section class="section-padding bg-light">
+        <div class="container">
+          <div class="promo-banner" data-aos="fade-up">
+            <div class="row g-0">
+              <div class="col-lg-6">
+                <div class="p-4 p-md-5" style="background: linear-gradient(to right, var(--primary-color), var(--primary-light)); height: 100%;">
+                  <div class="p-md-3 text-white">
+                    <h2 class="fs-1 fw-bold mb-4">Free Delivery on Your First Order!</h2>
+                    <p class="mb-4 fs-5">
+                      Sign up for an account and get free delivery on your first order with no minimum purchase. 
+                      Use code <span class="fw-bold">FIRSTORDER</span> at checkout.
+                    </p>
+                    <a href="shop.html" class="btn btn-light btn-lg">Shop Now</a>
+                    <div class="mt-4 d-flex align-items-center text-white-50">
+                      <i class="fas fa-clock me-2"></i>
+                      <span>Limited time offer. Terms and conditions apply.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 d-none d-lg-block">
+                <div style="position: relative; height: 100%;">
+                  <img src="https://images.unsplash.com/photo-1652169889237-84a2f2f386e6" alt="Delivery promotion" style="width: 100%; height: 100%; object-fit: cover;">
+                  <div style="position: absolute; inset: 0; background-color: rgba(0,0,0,0.2);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- More Promotions -->
+      <section class="section-padding">
+        <div class="container">
+          <h2 class="section-title" data-aos="fade-up">More Offers</h2>
+          
+          <div class="row g-4">
+            <!-- Promo 4 -->
+            <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+              <div class="promo-card">
+                <div class="promo-image">
+                  <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da" alt="15% Off All Dairy Products">
+                  <div class="promo-discount">15% OFF</div>
+                </div>
+                <div class="promo-content">
+                  <span class="promo-category"><i class="fas fa-tag me-1"></i>Dairy</span>
+                  <h3 class="promo-title">15% Off All Dairy Products</h3>
+                  <p class="promo-description">
+                    Enjoy 15% off our entire range of dairy products including milk, cheese, yogurt, and more.
+                  </p>
+                  <div class="promo-meta">
+                    <span><i class="fas fa-calendar-alt"></i>Ends: April 12, 2025</span>
+                  </div>
+                  <a href="shop.html?promotion=4" class="btn btn-primary w-100">Shop Now</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Promo 5 -->
+            <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+              <div class="promo-card">
+                <div class="promo-image">
+                  <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f" alt="Premium Meat Selection: 10% Off">
+                  <div class="promo-discount">10% OFF</div>
+                </div>
+                <div class="promo-content">
+                  <span class="promo-category"><i class="fas fa-tag me-1"></i>Meat & Seafood</span>
+                  <h3 class="promo-title">Premium Meat Selection: 10% Off</h3>
+                  <p class="promo-description">
+                    Get 10% off our premium range of meats, including beef, chicken, and lamb.
+                  </p>
+                  <div class="promo-meta">
+                    <span><i class="fas fa-calendar-alt"></i>Ends: April 18, 2025</span>
+                  </div>
+                  <a href="shop.html?promotion=5" class="btn btn-primary w-100">Shop Now</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Promo 6 -->
+            <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+              <div class="promo-card">
+                <div class="promo-image">
+                  <img src="https://images.unsplash.com/photo-1596803244897-0f57d32549dc" alt="Beverage Bonanza: Buy 3 Pay for 2">
+                  <div class="promo-discount">1 Free</div>
+                </div>
+                <div class="promo-content">
+                  <span class="promo-category"><i class="fas fa-tag me-1"></i>Beverages</span>
+                  <h3 class="promo-title">Beverage Bonanza: Buy 3 Pay for 2</h3>
+                  <p class="promo-description">
+                    Purchase any 3 beverages and only pay for 2. Applicable on all soft drinks, juices, and water.
+                  </p>
+                  <div class="promo-meta">
+                    <span><i class="fas fa-calendar-alt"></i>Ends: April 30, 2025</span>
+                  </div>
+                  <a href="shop.html?promotion=6" class="btn btn-primary w-100">Shop Now</a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Promo 7 -->
+            <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+              <div class="promo-card">
+                <div class="promo-image">
+                  <img src="https://images.unsplash.com/photo-1621873555835-641ab389aef7" alt="Baby Products Sale">
+                  <div class="promo-discount">20% OFF</div>
+                </div>
+                <div class="promo-content">
+                  <span class="promo-category"><i class="fas fa-tag me-1"></i>Baby Care</span>
+                  <h3 class="promo-title">Baby Products Sale</h3>
+                  <p class="promo-description">
+                    Save 20% on all baby essentials including diapers, wipes, formula, and more.
+                  </p>
+                  <div class="promo-meta">
+                    <span><i class="fas fa-calendar-alt"></i>Ends: April 22, 2025</span>
+                  </div>
+                  <a href="shop.html?promotion=7" class="btn btn-primary w-100">Shop Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter Section -->
+      <section id="newsletter" class="py-5 newsletter-section">
+        <div class="container py-4">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 text-center" data-aos="fade-up">
+              <h2 class="text-white mb-3">Subscribe to Our Newsletter</h2>
+              <p class="text-white-50 mb-4">
+                Subscribe to our newsletter and be the first to know about new products, special offers, and exclusive discounts.
+              </p>
+              
+              <form class="newsletter-form">
+                <div class="input-group">
+                  <input type="email" class="form-control" placeholder="Your email address" required>
+                  <button class="btn btn-light" type="submit" id="button-addon2">Subscribe</button>
+                </div>
+                <div class="form-text text-white-50 mt-2">
+                  By subscribing, you agree to receive promotional emails from Penafort Supermarket.
+                  You can unsubscribe at any time.
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-dark text-white">
+      <div class="container py-5">
+        <div class="row g-4">
+          <!-- About -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget">
+              <div class="footer-logo mb-3">
+                <img src="assets/images/logo.png" alt="Penafort Supermarket Logo" class="img-fluid footer-logo-img">
+                <span class="ms-2 footer-logo-text">Penafort</span>
+              </div>
+              <p class="footer-about">
+                Penafort Supermarket offers a variety of groceries, household items, and fast-moving consumer goods with a focus on quality, convenience, and exceptional customer service.
+              </p>
+              <div class="footer-social">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Quick Links -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget">
+              <h4 class="footer-widget-title">Quick Links</h4>
+              <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="promotions.html">Promotions</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Contact -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget">
+              <h4 class="footer-widget-title">Contact Us</h4>
+              <ul class="footer-contact">
+                <li>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Iba, Ojo, Lagos, Nigeria</span>
+                </li>
+                <li>
+                  <i class="fas fa-phone-alt"></i>
+                  <span>+234 123 456 7890</span>
+                </li>
+                <li>
+                  <i class="fas fa-envelope"></i>
+                  <span>info@penafortsupermarket.com</span>
+                </li>
+                <li>
+                  <i class="fas fa-clock"></i>
+                  <span>Mon-Sat: 8:00 AM - 9:00 PM<br>Sunday: 9:00 AM - 6:00 PM</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Newsletter -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-widget">
+              <h4 class="footer-widget-title">Newsletter</h4>
+              <p class="footer-newsletter-text">
+                Subscribe to our newsletter for updates on promotions and new products.
+              </p>
+              <form class="footer-newsletter-form">
+                <div class="input-group mb-3">
+                  <input type="email" class="form-control" placeholder="Your Email" required>
+                  <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              </form>
+              <div class="payment-methods">
+                <img src="assets/images/payment-methods.png" alt="Payment Methods" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="footer-bottom py-3">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+              <p class="mb-0">&copy; 2025 Penafort Supermarket - A subsidiary of Penafort Energy Nigeria Limited. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+              <a href="#" class="footer-bottom-link">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  </body>
+</html>
