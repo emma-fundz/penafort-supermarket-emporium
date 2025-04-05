@@ -1,7 +1,5 @@
-
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Heart } from 'lucide-react';
+import ProductCard from './ProductCard';
 
 const products = [
   {
@@ -103,16 +101,6 @@ const products = [
 ];
 
 const FeaturedProducts = () => {
-  const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
-
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-NG', {
-      style: 'currency',
-      currency: 'NGN',
-      maximumFractionDigits: 0
-    }).format(price);
-  };
-
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
@@ -120,73 +108,10 @@ const FeaturedProducts = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
           {products.map((product) => (
-            <div 
-              key={product.id} 
-              className="product-card"
-              onMouseEnter={() => setHoveredProduct(product.id)}
-              onMouseLeave={() => setHoveredProduct(null)}
-            >
-              <div className="relative">
-                <Link to={`/product/${product.id}`}>
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="w-full h-64 object-cover"
-                  />
-                </Link>
-                
-                {/* Product Labels */}
-                <div className="absolute top-2 left-2 flex flex-col gap-2">
-                  {product.isNew && (
-                    <span className="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
-                  )}
-                  {product.isSale && (
-                    <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">SALE</span>
-                  )}
-                </div>
-                
-                {/* Quick Actions */}
-                <div 
-                  className={`absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 p-2 flex justify-center gap-2 transition-all duration-300 ${
-                    hoveredProduct === product.id ? 'opacity-100' : 'opacity-0'
-                  }`}
-                >
-                  <button className="bg-penafort hover:bg-penafort-dark text-white p-2 rounded-full transition-colors duration-300">
-                    <ShoppingCart size={18} />
-                  </button>
-                  <button className="bg-gray-200 hover:bg-gray-300 text-gray-700 p-2 rounded-full transition-colors duration-300">
-                    <Heart size={18} />
-                  </button>
-                </div>
-              </div>
-              
-              <div className="p-4">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-sm text-gray-500">{product.category}</span>
-                  <div className="flex items-center">
-                    <span className="text-amber-500">★</span>
-                    <span className="text-sm text-gray-600 ml-1">{product.rating} ({product.reviewCount})</span>
-                  </div>
-                </div>
-                
-                <Link to={`/product/${product.id}`}>
-                  <h3 className="font-medium text-gray-800 hover:text-penafort transition-colors duration-300 mb-2">
-                    {product.name}
-                  </h3>
-                </Link>
-                
-                <div className="flex items-center">
-                  {product.discountPrice ? (
-                    <>
-                      <span className="font-bold text-gray-900 mr-2">{formatPrice(product.discountPrice)}</span>
-                      <span className="text-sm text-gray-500 line-through">{formatPrice(product.price)}</span>
-                    </>
-                  ) : (
-                    <span className="font-bold text-gray-900">{formatPrice(product.price)}</span>
-                  )}
-                </div>
-              </div>
-            </div>
+            <ProductCard
+              key={product.id}
+              {...product}
+            />
           ))}
         </div>
         

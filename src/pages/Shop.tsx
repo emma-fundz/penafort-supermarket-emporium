@@ -1,6 +1,6 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ProductCard from "@/components/ProductCard";
 import { useState } from "react";
 import { Filter, SlidersHorizontal, Grid, List, ChevronDown } from "lucide-react";
 
@@ -40,7 +40,6 @@ const products = [
     isNew: false,
     isSale: false,
   },
-  // More products from the FeaturedProducts component
   {
     id: 3,
     name: "Chocolate Chip Cookies",
@@ -107,7 +106,6 @@ const Shop = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
-        {/* Page Header */}
         <div className="bg-gray-100 py-8">
           <div className="container mx-auto px-4">
             <h1 className="text-3xl font-bold text-gray-900">Shop</h1>
@@ -121,10 +119,8 @@ const Shop = () => {
           </div>
         </div>
 
-        {/* Shop Content */}
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row">
-            {/* Sidebar - Categories & Filters */}
             <div className="md:w-1/4 pr-0 md:pr-6 mb-6 md:mb-0">
               <div className="md:sticky md:top-24">
                 <div className="bg-white rounded-lg shadow-md p-4 mb-4">
@@ -159,9 +155,7 @@ const Shop = () => {
               </div>
             </div>
 
-            {/* Products */}
             <div className="md:w-3/4">
-              {/* Toolbar */}
               <div className="bg-white rounded-lg shadow-md p-4 mb-6 flex flex-wrap justify-between items-center gap-3">
                 <div className="flex items-center">
                   <button
@@ -210,7 +204,6 @@ const Shop = () => {
                 </div>
               </div>
 
-              {/* Mobile Filters */}
               {showFilters && (
                 <div className="md:hidden bg-white rounded-lg shadow-md p-4 mb-6">
                   <div className="mb-4">
@@ -233,74 +226,13 @@ const Shop = () => {
                 </div>
               )}
 
-              {/* Products Grid/List */}
               {viewMode === "grid" ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {products.map((product) => (
-                    <div key={product.id} className="product-card">
-                      <div className="relative">
-                        <a href={`/product/${product.id}`}>
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                            className="w-full h-64 object-cover"
-                          />
-                        </a>
-
-                        {/* Product Labels */}
-                        <div className="absolute top-2 left-2 flex flex-col gap-2">
-                          {product.isNew && (
-                            <span className="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">
-                              NEW
-                            </span>
-                          )}
-                          {product.isSale && (
-                            <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                              SALE
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="p-4">
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-sm text-gray-500">{product.category}</span>
-                          <div className="flex items-center">
-                            <span className="text-amber-500">★</span>
-                            <span className="text-sm text-gray-600 ml-1">
-                              {product.rating} ({product.reviewCount})
-                            </span>
-                          </div>
-                        </div>
-
-                        <a href={`/product/${product.id}`}>
-                          <h3 className="font-medium text-gray-800 hover:text-penafort transition-colors duration-300 mb-2">
-                            {product.name}
-                          </h3>
-                        </a>
-
-                        <div className="flex items-center">
-                          {product.discountPrice ? (
-                            <>
-                              <span className="font-bold text-gray-900 mr-2">
-                                {formatPrice(product.discountPrice)}
-                              </span>
-                              <span className="text-sm text-gray-500 line-through">
-                                {formatPrice(product.price)}
-                              </span>
-                            </>
-                          ) : (
-                            <span className="font-bold text-gray-900">
-                              {formatPrice(product.price)}
-                            </span>
-                          )}
-                        </div>
-
-                        <button className="mt-4 w-full bg-penafort hover:bg-penafort-dark text-white py-2 rounded-md transition-colors duration-300">
-                          Add to Cart
-                        </button>
-                      </div>
-                    </div>
+                    <ProductCard
+                      key={product.id}
+                      {...product}
+                    />
                   ))}
                 </div>
               ) : (
