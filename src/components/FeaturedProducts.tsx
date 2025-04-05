@@ -1,5 +1,8 @@
+
 import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 const products = [
   {
@@ -104,25 +107,49 @@ const FeaturedProducts = () => {
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
-        <h2 className="section-heading">Featured Products</h2>
+        <motion.div 
+          className="text-center mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl font-bold mb-4">Featured Products</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Discover our handpicked selection of high-quality products at competitive prices.
+            From fresh produce to household essentials, we've got you covered.
+          </p>
+        </motion.div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
-          {products.map((product) => (
-            <ProductCard
+          {products.map((product, index) => (
+            <motion.div
               key={product.id}
-              {...product}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ProductCard {...product} />
+            </motion.div>
           ))}
         </div>
         
-        <div className="text-center mt-10">
-          <Link to="/shop" className="btn-primary inline-flex items-center">
+        <motion.div 
+          className="text-center mt-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <Link 
+            to="/shop" 
+            className="inline-flex items-center bg-penafort hover:bg-penafort-dark text-white px-6 py-3 rounded-md font-medium transition-colors"
+          >
             View All Products
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
+            <ArrowRight className="h-5 w-5 ml-2" />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
